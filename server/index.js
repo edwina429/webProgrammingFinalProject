@@ -6,17 +6,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 const {Sequelize, DataTypes} = require("sequelize");
 const { ConstantColorFactor } = require("three");
-app.use(cors());
-app.use(express.json());  
-
-
 const cors = require("cors");
 app.use(
   cors({
-    origin: "https://webprogrammingfinalprojectbeta.onrender.com/",
+    origin: "https://webprogrammingserver.onrender.com/",
   })
 );
-
+app.use(express.json());  
 
 const sequelize = new Sequelize(process.env.DB_URL, {
     dialect: "postgres",
@@ -179,5 +175,5 @@ app.post("/verifyUser", async(req, res) => {
 
 
 
-app.listen(4090, () => console.log(`Server is running on http://localhost:${port}`))
+app.listen(port, () => console.log(`Server is running on http://localhost:${port}`))
 

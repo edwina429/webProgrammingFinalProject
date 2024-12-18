@@ -8,7 +8,7 @@ import logo from './logo.svg';
 import Vault from './components/full_vault';
 import './App.css';
 
-
+const api_url = process.env.REACT_APP_API_BASE_URL;
 // really cool animated emojis on this website
 // https://animated-fluent-emoji.vercel.app/
 
@@ -73,7 +73,7 @@ function SignUp(){
   // This is interesting, trying to understand how to send such information. 
   // https://stackoverflow.com/questions/43965316/for-login-get-or-post
   async function addUser(){
-    await fetch("https://webprogrammingfinalprojectbeta.onrender.com/addUser", {
+    await fetch(`${api_url}/addUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -145,7 +145,7 @@ function Login(){
   const [incorrectLogin, setIncorrectLogin] = useState(false);
   const [signUpPage, setSignUpPage] = useState(false);
   async function validateUser(){
-    await fetch("https://webprogrammingfinalprojectbeta.onrender.com/verifyUser", {
+    await fetch(`${api_url}/verifyUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

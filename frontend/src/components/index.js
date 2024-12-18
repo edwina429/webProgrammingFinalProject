@@ -1,7 +1,8 @@
-// App.js
-import React, { useState } from 'react';
-import Chart from 'chart.js/auto';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 import './index.css';
+
 
 function App() {
   const [goals, setGoals] = useState([]);

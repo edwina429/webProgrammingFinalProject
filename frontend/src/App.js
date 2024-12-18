@@ -200,10 +200,3 @@ function Login(){
 }
 
 export default App;
-//      depricated for now, goes in App()
-        // <Routes>
-          
-        //   <Route exact path="/" element={<Home></Home>}></Route>
-        //   <Route exact path="/goals" element={<Goals></Goals>}></Route>
-        //   <Route exact path="/myaccount" element={<Myaccount></Myaccount>}></Route>
-        // </Routes>

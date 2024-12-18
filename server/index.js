@@ -63,7 +63,7 @@ const sequelize = new Sequelize(process.env.DB_URL, {
       }
     });
 
-app.post("https://webprogrammingfinalprojectbeta.onrender.com/addStudent", async(req, res) => {
+app.post("/addStudent", async(req, res) => {
   try{
     const {name, password, email, balance} = req.body
     const id = 1
@@ -76,7 +76,7 @@ app.post("https://webprogrammingfinalprojectbeta.onrender.com/addStudent", async
   }
 });
 
-app.post("https://webprogrammingfinalprojectbeta.onrender.com/verifyUser", async(req, res) => {
+app.post("/verifyUser", async(req, res) => {
   try{
     const userInput = req.body
     const allUsers = await students.findAll({

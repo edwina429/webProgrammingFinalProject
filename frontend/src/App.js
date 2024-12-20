@@ -37,15 +37,35 @@ const Incorrect = () => {
   > Incorrect login, please try again. </motion.h3>
 }
 
+// function App() {
+//   return (  
+//         <div>
+//           {/* <SignUp></SignUp> */}
+//           <Login></Login>
+//           <Vault></Vault>
+//         </div>
+    
+//   )
+// }
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  if(!isLoggedIn){
+    return(
+        <div>
+          <Login setIsLoggedIn={setIsLoggedIn}/>
+        </div>
+    );
+  }
   return (  
         <div>
           {/* <SignUp></SignUp> */}
-          <Login></Login>
+          {/*<Login></Login>*/}
           <Vault></Vault>
+          <GoalsPage></GoalsPage>
         </div>
     
-  )
+  ); //right now both are being displayed at the same time!! must create button in GoalsPage to access VaultPage, will do later
 }
 
 function Success(){
@@ -138,20 +158,23 @@ function SignUp(){
   )
 }
 
-function Login(){
+function Login(setIsLoggedIn){
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginState, setLoginState] = useState(false);
   const [incorrectLogin, setIncorrectLogin] = useState(false);
   const [signUpPage, setSignUpPage] = useState(false);
   async function validateUser(){
-    await fetch("https://webprogrammingfinalprojectbeta.onrender.com/verifyUser", {
+    const verification = await fetch("https://webprogrammingfinalprojectbeta.onrender.com/verifyUser", { //added to verify if user signed in, if yes (look below for further comments)
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username, password})
+      body: JSON.stringify({username, password})
     })
+    if (verification.ok) { //if verification (login successful), sets this value to true which shows the Vault page
+      setIsLoggedIn(true);
+    }
     .then((res) => {
       // function handles response, setting loginState based on query results.
       if(res.status == 200){

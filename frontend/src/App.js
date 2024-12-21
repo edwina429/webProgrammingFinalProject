@@ -49,7 +49,7 @@ const Incorrect = () => {
 // }
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentPage, setCurrentPage] = useState('goals');
+  const [currentPage, setCurrentPage] = useState('goals');   {/*used to check what page the website is currently on (either vault page or goals page). this value defaults to goals*/}
 
   const navigate = (page) => {
     setCurrentPage(page);
@@ -57,7 +57,7 @@ function App() {
 
   if (!isLoggedIn) {
     return (
-        <div>
+        <div> 
           <Login setIsLoggedIn={setIsLoggedIn}/>
         </div>
     );
@@ -66,7 +66,7 @@ function App() {
       <div>
         {/* <SignUp></SignUp> */}
         {/*<Login></Login>*/}
-        {currentPage === 'goals' && <GoalsPage navigate={navigate}/>}
+        {currentPage === 'goals' && <GoalsPage navigate={navigate}/>} {/*check within both index.js files and full_vault.js files. added buttons for both pages that can be used to switch between the two pages. navigate is what sets current page*/}
         {currentPage === 'vault' && <Full_vault navigate={navigate}/>}
       </div>
 

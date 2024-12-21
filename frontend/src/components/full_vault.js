@@ -31,6 +31,17 @@ class Vault{
     }
 }
 
+function GoalsPage({navigate}){
+    return(
+        <div>
+            <button onClick={() => navigate('goals')} > {/*include style here*/}
+            Go to Goals Page
+            </button>
+        </div>
+    );
+}
+
+
 function createVault(){
     const[visible, setVisibility] = useState(false);
     const[vault_input, setVault_input] = useState("");

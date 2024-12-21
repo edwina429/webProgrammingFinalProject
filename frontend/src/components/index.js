@@ -8,7 +8,7 @@ function Vault({navigate}){
   return(
       <div>
         <button onClick={() => navigate('vault')} > {/*include style here*/}
-          Go to Goals Page
+          Go to Vault Page
         </button>
       </div>
   );

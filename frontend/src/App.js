@@ -169,27 +169,54 @@ function Login(setIsLoggedIn){
   const [loginState, setLoginState] = useState(false);
   const [incorrectLogin, setIncorrectLogin] = useState(false);
   const [signUpPage, setSignUpPage] = useState(false);
-  async function validateUser(){
+  // async function validateUser(){
+  //   const verification = await fetch("https://webprogrammingfinalprojectbeta.onrender.com/verifyUser", { //added to verify if user signed in, if yes (look below for further comments)
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({username, password})
+  //   })
+  //   if (verification.ok) { //if verification (login successful), sets this value to true which shows the Vault page
+  //     setIsLoggedIn(true);
+  //   }
+  //   .then((res) => {
+  //     // function handles response, setting loginState based on query results.
+  //     if(res.status == 200){
+  //       setLoginState(true);
+  //     }
+  //     else{
+  //       setIncorrectLogin(true);
+  //     }
+  //   })
+  // }
+    async function validateUser() {
+    try{
     const verification = await fetch("https://webprogrammingfinalprojectbeta.onrender.com/verifyUser", { //added to verify if user signed in, if yes (look below for further comments)
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({username, password})
-    })
+    });
     if (verification.ok) { //if verification (login successful), sets this value to true which shows the Vault page
       setIsLoggedIn(true);
+    } else {
+      setIncorrectLogin(true);
+      setIsLoggedIn(false);
+      setLoginState(false);
     }
-    .then((res) => {
-      // function handles response, setting loginState based on query results.
-      if(res.status == 200){
-        setLoginState(true);
-      }
-      else{
-        setIncorrectLogin(true);
-      }
-    })
   }
+
+catch
+  (error)
+  {
+    console.error('error: ', error);
+    setIncorrectLogin(true);
+    setIsLoggedIn(false);
+    setLoginState(false);
+  }
+}
 
   // TODO: when login successful, return homepage div. 
   if (loginState)

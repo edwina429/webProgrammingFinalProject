@@ -7,7 +7,7 @@ import './index.css';
 function Vault({navigate}){
   return(
       <div>
-        <button onClick={() => navigate('vault')} >
+        <button onClick={() => navigate('vault')} > {/*include style here*/}
           Go to Goals Page
         </button>
       </div>

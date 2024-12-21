@@ -4,6 +4,17 @@ import App from './App';
 import './index.css';
 
 
+function Vault({navigate}){
+  return(
+      <div>
+        <button onClick={() => navigate('vault')} >
+          Go to Goals Page
+        </button>
+      </div>
+  );
+}
+
+
 function App() {
   const [goals, setGoals] = useState([]);
 

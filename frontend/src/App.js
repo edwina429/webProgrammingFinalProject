@@ -49,23 +49,28 @@ const Incorrect = () => {
 // }
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentPage, setCurrentPage] = useState('goals');
 
-  if(!isLoggedIn){
-    return(
+  const navigate = (page) => {
+    setCurrentPage(page);
+  }
+
+  if (!isLoggedIn) {
+    return (
         <div>
           <Login setIsLoggedIn={setIsLoggedIn}/>
         </div>
     );
   }
-  return (  
-        <div>
-          {/* <SignUp></SignUp> */}
-          {/*<Login></Login>*/}
-          <Vault></Vault>
-          <GoalsPage></GoalsPage>
-        </div>
-    
-  ); //right now both are being displayed at the same time!! must create button in GoalsPage to access VaultPage, will do later
+  return (
+      <div>
+        {/* <SignUp></SignUp> */}
+        {/*<Login></Login>*/}
+        {currentPage === 'goals' && <GoalsPage navigate={navigate}/>}
+        {currentPage === 'vault' && <Full_vault navigate={navigate}/>}
+      </div>
+
+  );
 }
 
 function Success(){

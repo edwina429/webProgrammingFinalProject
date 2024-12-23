@@ -8,7 +8,6 @@ import logo from './logo.svg';
 import Vault from './components/full_vault';
 import './App.css';
 
-
 // really cool animated emojis on this website
 // https://animated-fluent-emoji.vercel.app/
 
@@ -42,7 +41,7 @@ function App() {
         <div>
           {/* <SignUp></SignUp> */}
           <Login></Login>
-          <Vault></Vault>
+          {/* <Vault></Vault> */}
         </div>
     
   )
@@ -69,33 +68,37 @@ function SignUp(){
   const [email, setEmail] = useState('')
   const [loginState, setLoginState] = useState(false);
   const [incorrectLogin, setIncorrectLogin] = useState(false);
+  const [isSignIn, setIsSignIn] = useState(false); // state to toggle between login and sign up
 
   // This is interesting, trying to understand how to send such information. 
   // https://stackoverflow.com/questions/43965316/for-login-get-or-post
   async function addUser(){
-    await fetch("https://webprogrammingserver.onrender.com/addUser", {
+    await fetch(`${process.env.REACT_APP_API_URL/addStudent}`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username, password, email, balance})
+      
+      body: JSON.stringify({username,password,email,balance})
     })
     setEmail('')
     setUsername('')
     setPassword('')
     setBalance('')
   }
-
+  if (isSignIn)
+    return <Login/>;
   return(
-    <div className="split left">
+    
+    <div className='split left'>
       {/* <img className = "background-image" 
       src='https://wagner.edu/communications/files/2020/03/MainHall4-1920.jpg'>
       </img> */}
+      <TextAnimation></TextAnimation>
       <div className="inner-login-div">
         {/*     <LoginInSignUp></LoginInSignUp> */}
-        <h1 className="login-heading"> <TextAnimationSignUp></TextAnimationSignUp> </h1>
         <div className='login-forms'>
-
+          <h1>Create an account ! </h1>
             <h2 className='username-password'>Username <IoMdPerson /></h2>
               <input 
               required
@@ -120,12 +123,15 @@ function SignUp(){
               required
               />          
             <h2 className='username-password'> Starting Deposit <TbPigMoney /></h2>
+            
             <input 
               className='logins'
               type = "text"
               value = {balance}
               onChange={(event) => setBalance(event.target.value)}
               />                    
+            <p className='sign-up-link'> Already have an account?</p>
+            <button className="sign-up-link" onClick={() => setIsSignIn(true)}> Sign In</button> 
             <button className='login-button' onClick={addUser}> Sign Up </button>
 
         </div>
@@ -143,9 +149,9 @@ function Login(){
   const [password, setPassword] = useState('')
   const [loginState, setLoginState] = useState(false);
   const [incorrectLogin, setIncorrectLogin] = useState(false);
-  const [signUpPage, setSignUpPage] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false); // state to toggle between login and sign up
   async function validateUser(){
-    await fetch("https://webprogrammingserver.onrender.com/verifyUser", {
+    await fetch(`${process.env.REACT_APP_API_URL/verifyUser}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -166,11 +172,15 @@ function Login(){
   // TODO: when login successful, return homepage div. 
   if (loginState)
     return <Success></Success>
+
+  if (isSignUp)
+    return <SignUp/>;
+
+
   return(
     <div className="split left">
       <TextAnimation></TextAnimation>
       <div className="inner-login-div">
-        {/*     <LoginInSignUp></LoginInSignUp> */}
         <h1>Welcome back</h1>
         <p style={{color : 'grey'}}>Please enter your details </p>
         {/* <form> */}
@@ -192,7 +202,12 @@ function Login(){
           onChange={(event) => setPassword(event.target.value)}
           />
           {incorrectLogin ? <h3 className='logins' style={{textAlign : 'center'}}> <Incorrect></Incorrect></h3> : null}
-          <p className='sign-up-link'>Don't have an account? <button className="sign-up-link">Sign Up</button></p>
+          <p className='sign-up-link'>Don't have an account? 
+            <button className="sign-up-link" onClick={() => setIsSignUp(true)}>Sign Up</button> 
+          </p>
+          <div className='split right'>
+            {/* <img className='login-image' src='https://www.marketplace.org/wp-content/uploads/2021/04/CM4.png?fit=2500%2C1807' width={1400}></img> */}
+          </div>
         <button className='login-button' onClick={validateUser}> Sign In </button>
       </div>
     </div>

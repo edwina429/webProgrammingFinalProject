@@ -7,22 +7,32 @@ body {
   
 }
 
-
 .split {
-
   height: 100%;
   width: 50%;
   position: fixed;
-  z-index: 1;
-  top: 0;
+  /* z-index: 1; */
   overflow-x: hidden;
   padding-top: 20px;
 }
 
 
+.sign-up{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: -25px;
+  margin-left: -1000px; 
+}
+
+
 /* Control the left side */
 .left {
+  left:  300px;
   display: flex;
+  width: 100%;
+  height: 100%;
   /* flex-direction defaults to row */
   align-items: center;
   /* 100px 100px 100px 100px; */
@@ -32,9 +42,9 @@ body {
 
 /* Control the right side */
 .right {
-  top: -200;
   right: 0;
-  /* background: #74ebd5;  fallback for old browsers */
+  bottom: 0px;
+  background: #74ebd5;  
   /* background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);  Chrome 10-25, Safari 5.1-6 */
   /* background: linear-gradient(to right, #ACB6E5, #74ebd5); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   
@@ -53,10 +63,7 @@ body {
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  
-  /* justify-content: center; */
-  /* borders for div testing */
-  /* border: 5px rgb(106, 0, 255) solid; */
+
 }
 
 
@@ -68,12 +75,8 @@ body {
 
 }
 
-.login-forms{
-  
-}
 
 .logins{
-  /* font-family: "Poppins"; */
   align-self: center;
   padding: 10px;
   width: 400px;

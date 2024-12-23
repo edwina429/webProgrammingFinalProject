@@ -1,0 +1,272 @@
+
+
+/* this is the nava bar tool */
+.header{
+    background-color: rgb(27, 108, 221);
+}
+
+
+
+
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header with College Logo and Main Menu */
+
+/* Header with College Logo and Main Menu */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Space between logo and buttons */
+    align-items: center;
+    background-color: rgb(27, 108, 221);
+    padding: 10px 20px; /* Add padding for better spacing */
+    box-sizing: border-box;
+}
+
+/* College Logo */
+.college-logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Main Menu (Account and Profile Buttons) */
+.main-menu {
+    display: flex;
+    gap: 20px;
+    margin-left: 1200px; /* Pushes the menu to the right */
+    align-items: right;
+    transform: translateY(-85px);
+}
+
+/* Button Section for New Goal and Previous Goal Buttons */
+.button-section {
+    /* find a commans to fix the buttons */
+    color: black;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    margin-bottom: 35px;
+    margin-right: -470px;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 100px;
+}
+
+
+
+/* Buttons for account and profile css*/
+button {
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Goal Input Section */
+.goal-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+
+
+/* here will be the calander css */
+
+
+/* Calendar Container */
+.calendar-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; 
+    margin-top: -215px;         
+    margin-right: 20px;       
+    Transform: translateX(-50px);
+}
+
+/* Calendar Styling */
+.calendar {
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.calendar h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #007BFF;
+}
+
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar th, .calendar td {
+    width: 14.28%;          
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.calendar th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+    color: #333;
+}
+
+.calendar td {
+    background-color: #f9f9f9;
+}
+
+.calendar td:hover {
+    background-color: #e0f0ff;
+    cursor: pointer;
+}
+
+
+
+
+/* goal from the user */
+
+
+
+/* Goal List Section */
+.goal-list {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: -155px;
+    margin-left: -750px;
+}
+
+.goal-list h3 {
+    margin-bottom: 10px;
+    color: #007BFF;
+}
+
+.goal-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.goal-list li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 15px;
+    position: relative;  
+    z-index: 10;         
+}
+
+/* Button Section */
+.button-section {
+    width: 100%;
+    position: relative; 
+    z-index: 10;        
+}
+
+
+
+
+
+/* Chart Container */
+.chart-wrapper {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* Dropdown container (hidden by default) */
+.dropdown {
+    display: none; /* Initially hidden */
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 0;
+    z-index: 100; /* Ensure it appears above other elements */
+}
+
+/* Dropdown options */
+.dropdown a {
+    display: block;
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Position dropdowns relative to their buttons */
+.account-dropdown {
+    top: 50px;
+    left: 0;
+}
+
+.profile-dropdown {
+    top: 50px;
+    left: 120px; /* Adjust to align with the Profile button */
+}
+
+/* Show dropdown on button hover */
+.Account-button:hover + .account-dropdown,
+.Profile-button:hover + .profile-dropdown {
+    display: block; /* Show the dropdown menu */
+}

@@ -5,7 +5,7 @@ import { IoIosKey } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { TbPigMoney } from "react-icons/tb";
 import logo from './logo.svg';
-import Vault from './components/full_vault';
+// import Vault from './components/full_vault';
 import './App.css';
 
 // really cool animated emojis on this website

@@ -1,6 +1,17 @@
 import React from "react";
 import "./webpage.css";
 
+function Vault({navigate}){
+  return(
+      <div>
+        <button onClick={() => navigate('vault')} > {/*include style here*/}
+          Go to Vault Page
+        </button>
+      </div>
+  );
+}
+
+
 function HomePage() {
   return (
     <div>

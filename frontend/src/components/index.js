@@ -30,7 +30,7 @@ function App() {
 
     const amountPaid = parseFloat(prompt("How much have you paid so far?"));
     if (isNaN(amountPaid) || amountPaid < 0 || amountPaid > totalCost) {
-      alert("Please enter a valid amount paid (less than or equal to the total cost).\");
+      alert("Please enter a valid amount paid (less than or equal to the total cost).");
       return;
     }
 

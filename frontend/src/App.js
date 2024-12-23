@@ -72,7 +72,7 @@ function SignUp(){
 
   // This is interesting, trying to understand how to send such information. 
   // https://stackoverflow.com/questions/43965316/for-login-get-or-post
-  `${x = 10} words `
+
   async function addUser(){
     await fetch(`${process.env.REACT_APP_API_URL}/addStudent`,{
       method: "POST",

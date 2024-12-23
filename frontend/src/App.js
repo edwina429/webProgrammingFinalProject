@@ -5,6 +5,7 @@ import { IoIosKey } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { TbPigMoney } from "react-icons/tb";
 import logo from './logo.svg';
+import Homepage from './components/homepage.js'; 
 import GoalsPage from './components/index.js'; 
 import Full_vault from './components/full_vault';
 import './App.css';

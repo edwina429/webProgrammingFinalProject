@@ -9,7 +9,7 @@ import Homepage from './components/homepage.js';
 import GoalsPage from './components/index.js'; 
 import Full_vault from './components/full_vault';
 import './App.css';
-
+import './webpage.css';
 
 // really cool animated emojis on this website
 // https://animated-fluent-emoji.vercel.app/

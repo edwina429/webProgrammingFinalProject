@@ -61,16 +61,6 @@ function App() {
           <Login setIsLoggedIn={setIsLoggedIn}/>
         </div>
     );
-  }
-  return (
-      <div>
-        {/* <SignUp></SignUp> */}
-        {/*<Login></Login>*/}
-        {currentPage === 'goals' && <GoalsPage navigate={navigate}/>} {/*check within both index.js files and full_vault.js files. added buttons for both pages that can be used to switch between the two pages. navigate is what sets current page*/}
-        {currentPage === 'vault' && <Full_vault navigate={navigate}/>}
-      </div>
-
-  );
 }
 
 function Success(){

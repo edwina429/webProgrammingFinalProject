@@ -5,7 +5,7 @@ import { IoIosKey } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { TbPigMoney } from "react-icons/tb";
 import logo from './logo.svg';
-// import Vault from './components/full_vault';
+// import Vault from './full_vault';
 import './App.css';
 
 // really cool animated emojis on this website
@@ -72,8 +72,9 @@ function SignUp(){
 
   // This is interesting, trying to understand how to send such information. 
   // https://stackoverflow.com/questions/43965316/for-login-get-or-post
+  `${x = 10} words `
   async function addUser(){
-    await fetch(`${process.env.REACT_APP_API_URL/addStudent}`,{
+    await fetch(`${process.env.REACT_APP_API_URL}/addStudent`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -151,7 +152,7 @@ function Login(){
   const [incorrectLogin, setIncorrectLogin] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false); // state to toggle between login and sign up
   async function validateUser(){
-    await fetch(`${process.env.REACT_APP_API_URL/verifyUser}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/verifyUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

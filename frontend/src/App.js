@@ -76,7 +76,7 @@ function App() {
 
 function Success(){
   return(
-    <h1>welcome user</h1>
+    <Homepage></Homepage>
   )
 }
 

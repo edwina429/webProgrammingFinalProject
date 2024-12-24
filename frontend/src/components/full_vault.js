@@ -51,7 +51,7 @@ function GoalsPage({navigate}){
 }
 
 
-function createVault(){
+function CreateVault(){
     const[visible, setVisibility] = useState(false);
     const[vault_input, setVault_input] = useState("");
     const[amount_input, setAmount_input] = useState("");

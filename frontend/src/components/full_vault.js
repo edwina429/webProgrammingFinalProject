@@ -113,7 +113,7 @@ function CreateVault(){
 
     return (
         <div className="new-vault">
-            <button onClick={toggle_visibility}>
+            <button className='vault-button' onClick={toggle_visibility}>
                 {visible ? "Cancel" : "Create New Vault"}
             </button>
 
@@ -143,7 +143,7 @@ function CreateVault(){
                         onChange={(e) => setGoal_input(e.target.value)}
                         />
 
-                    <button onClick={submit} type="button">
+                    <button  onClick={submit} type="button">
                         Submit
                     </button>
                 </div>

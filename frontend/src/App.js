@@ -1,14 +1,13 @@
 import React from 'react';
+import {useState} from "react";
 import {motion} from "framer-motion";
 import { IoMdPerson } from "react-icons/io";
-import {useState} from "react";
 import { IoIosKey } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { TbPigMoney } from "react-icons/tb";
-import logo from './logo.svg';
 import Homepage from './components/homepage.js'; 
 import Full_vault from './components/full_vault';
-import './App.css';
+import './login.css';
 
 // animated emojis on this website
 // https://animated-fluent-emoji.vercel.app/
@@ -57,25 +56,10 @@ function App() {
   return (  
         <div>
           <Login></Login>
-          
         </div>    
   )
 }
 
-function Success(){
-  return(
-    // TODO : add homepage && vault here.
-    <Full_vault></Full_vault>
-  )
-}
-
-function LoginInSignUp(){
-  return(
-    <div className='login-sign-up'>
-    <button className='login-button'>login</button> <button className='login-button'>sign up</button>
-    </div>
-  )
-}
 
 function SignUp(){
   const [username, setUsername] = useState('')

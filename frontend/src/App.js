@@ -60,7 +60,7 @@ function App() {
     return (
         <div> 
           {/* <Login/> */}
-          // <Homepage></Homepage>
+          <Homepage></Homepage>
         {currentPage === 'homepage' && <Homepage navigate={navigate} />}
         {currentPage === 'full_vault' && <Full_vault navigate={navigate} />}      
           {/* <Full_vault></Full_vault> */}

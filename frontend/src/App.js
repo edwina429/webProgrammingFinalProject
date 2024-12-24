@@ -57,6 +57,7 @@ function App() {
   return (  
         <div>
           <Login></Login>
+          
         </div>    
   )
 }
@@ -64,7 +65,7 @@ function App() {
 function Success(){
   return(
     // TODO : add homepage && vault here.
-    <p>****</p>
+    <Full_vault></Full_vault>
   )
 }
 
@@ -203,7 +204,11 @@ function Login(){
 
   if (loginState)
     // TODO: when login successful, return homepage div. 
-    return <Homepage></Homepage>
+    return <div>
+      <Homepage></Homepage>
+      <Full_vault></Full_vault>
+    </div>
+    
   if (isSignUp)
     return <SignUp/>
   return(

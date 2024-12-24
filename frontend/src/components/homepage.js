@@ -144,44 +144,44 @@ function HomePage() {
 
 
 // start planning for keeping an array of vaults for database purposes
-class Vault{
-    #title;
-    #amount;
-    #goal;
+// class Vault{
+//     #title;
+//     #amount;
+//     #goal;
 
-    constructor(title, amount, goal){
-        this.#title = title;
-        this.#amount = amount;
-        this.#goal = goal;
-    }
-    display(){
-        console.log(this.#title);
-        console.log(this.#amount);
-        console.log(this.#goal);
-    }
-    addMoney(additional){
-        this.#amount += additional;
-        return this.#amount
-    }
-    withdrawMoney(){
-        if(this.#amount >= this.#goal){
-            const withdrawn_amount = this.#amount;
-            this.#amount = 0;
-            return withdrawn_amount;
-        }else{
-            throw new Error("Nice try, but goal not reached yet. Save more money and believe in yourself");
-        }
-    }
-    getTitle(){
-        return this.#title;
-    }
-    getAmount(){
-        return this.#amount;
-    }
-    getGoal(){
-        return this.#goal;
-    }
-}
+//     constructor(title, amount, goal){
+//         this.#title = title;
+//         this.#amount = amount;
+//         this.#goal = goal;
+//     }
+//     display(){
+//         console.log(this.#title);
+//         console.log(this.#amount);
+//         console.log(this.#goal);
+//     }
+//     addMoney(additional){
+//         this.#amount += additional;
+//         return this.#amount
+//     }
+//     withdrawMoney(){
+//         if(this.#amount >= this.#goal){
+//             const withdrawn_amount = this.#amount;
+//             this.#amount = 0;
+//             return withdrawn_amount;
+//         }else{
+//             throw new Error("Nice try, but goal not reached yet. Save more money and believe in yourself");
+//         }
+//     }
+//     getTitle(){
+//         return this.#title;
+//     }
+//     getAmount(){
+//         return this.#amount;
+//     }
+//     getGoal(){
+//         return this.#goal;
+//     }
+// }
 
 // function GoalsPage({navigate}){
 //     return(

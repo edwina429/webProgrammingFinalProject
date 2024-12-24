@@ -143,7 +143,7 @@ function CreateVault(){
                 </div>
                 )}
 
-        //display already created vaults i hope
+
         <div className = "createdvaults">
             {vaults.map((vault, index) => (
                 <div key={index} className="vault">

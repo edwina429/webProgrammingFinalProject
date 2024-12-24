@@ -2,7 +2,6 @@ import React from "react";
 // import {useState} from 'react';
 import "./webpage.css";
 import { useState } from "react";
-import { Chart, registerables } from "chart.js";
 function Vault({navigate}){
   
   return(

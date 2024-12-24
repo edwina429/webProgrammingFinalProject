@@ -89,7 +89,7 @@ function SignUp(){
   // This is interesting, trying to understand how to send such information. 
   // https://stackoverflow.com/questions/43965316/for-login-get-or-post
   async function addUser(){
-    await fetch("https://webprogrammingfinalprojectbeta.onrender.com/addUser", {
+    await fetch(`${process.env.REACT_APP_API_URL}/addStudent`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -183,7 +183,7 @@ function Login(setIsLoggedIn){
   // }
     async function validateUser() {
     try{
-    const verification = await fetch("https://webprogrammingfinalprojectbeta.onrender.com/verifyUser", { //added to verify if user signed in, if yes (look below for further comments)
+    const verification = await fetch(`${process.env.REACT_APP_API_URL}/verifyUser`, {//added to verify if user signed in, if yes (look below for further comments)
       method: "POST",
       headers: {
         "Content-Type": "application/json"

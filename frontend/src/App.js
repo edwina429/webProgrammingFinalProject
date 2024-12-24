@@ -1,6 +1,7 @@
 import React from 'react';
 import {motion} from "framer-motion";
-import { IoMdPerson } from "react-icons/io";import {useState} from "react";
+import { IoMdPerson } from "react-icons/io";
+import {useState} from "react";
 import { IoIosKey } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { TbPigMoney } from "react-icons/tb";
@@ -243,7 +244,7 @@ catch
     </div>
   )
 }
-
+}
 export default App;
 //      depricated for now, goes in App()
         // <Routes>

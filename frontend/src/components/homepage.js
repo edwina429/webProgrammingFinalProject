@@ -19,7 +19,6 @@ function Vault({navigate}){
 
 
 
-Chart.register(...registerables);
 
 const HomePage = () => {
   const [charts, setCharts] = useState([]);
@@ -44,54 +43,8 @@ const HomePage = () => {
     const newGoal = { goalName, totalCost, amountPaid };
     setGoals((prevGoals) => [...prevGoals, newGoal]);
 
-    createNewChart(goalName, amountPaid, totalCost);
   };
 
-  const createNewChart = (goalName, amountPaid, totalCost) => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-
-    const chartInstance = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: [goalName],
-        datasets: [
-          {
-            label: "Amount Paid",
-            data: [amountPaid],
-            backgroundColor: "#28a745",
-          },
-          {
-            label: "Amount Remaining",
-            data: [totalCost - amountPaid],
-            backgroundColor: "#ffc107",
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom",
-          },
-          title: {
-            display: true,
-            text: "Goal Progress",
-          },
-        },
-        scales: {
-          x: {
-            stacked: true,
-          },
-          y: {
-            stacked: true,
-          },
-        },
-      },
-    });
-
-    setCharts((prevCharts) => [...prevCharts, { goalName, chartInstance }]);
-  };
 
   const handleDeleteGoal = (goalName) => {
     setGoals((prevGoals) => prevGoals.filter((goal) => goal.goalName !== goalName));

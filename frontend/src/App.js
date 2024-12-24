@@ -10,7 +10,7 @@ import Homepage from './components/homepage.js';
 import Full_vault from './components/full_vault';
 import './App.css';
 
-// really cool animated emojis on this website
+// animated emojis on this website
 // https://animated-fluent-emoji.vercel.app/
 
 const TextAnimation = () => {
@@ -37,41 +37,34 @@ const Incorrect = () => {
   transition={{duration : 0.7, ease : "easeInOut"}}  
   > Incorrect login, please try again. </motion.h3>
 }
+const SignUpFailed = () => {
+  return <motion.h3
+  initial ={{y : 25 , opacity :0}}
+  animate ={{y : 0 , opacity :1}}
+  transition={{duration : 0.7, ease : "easeInOut"}}  
+  > Username already exists, please try again. </motion.h3>
+}
 
-// function App() {
-//   return (  
-//         <div>
-//           {/* <SignUp></SignUp> */}
-//           <Login></Login>
-//           <Vault></Vault>
-//         </div>
-    
-//   )
-// }
+const SignUpSuccess = () => {
+  return <motion.h3
+  initial ={{y : 25 , opacity :0}}
+  animate ={{y : 0 , opacity :1}}
+  transition={{duration : 0.7, ease : "easeInOut"}}  
+  > Account created, please login. </motion.h3>
+}
+
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentPage, setCurrentPage] = useState('goals');   {/*used to check what page the website is currently on (either vault page or goals page). this value defaults to goals*/}
-
-  const navigate = (page) => {
-    setCurrentPage(page);
-  }
-
-  if (!isLoggedIn) {
-    return (
-        <div> 
-          {/* <Login/> */}
-          <Homepage></Homepage>
-        {currentPage === 'homepage' && <Homepage navigate={navigate} />}
-        {currentPage === 'full_vault' && <Full_vault navigate={navigate} />}      
-          {/* <Full_vault></Full_vault> */}
-          
-        </div>
-    );
+  return (  
+        <div>
+          <Login></Login>
+        </div>    
+  )
 }
 
 function Success(){
   return(
-    <Homepage></Homepage>
+    // TODO : add homepage && vault here.
+    <p>****</p>
   )
 }
 
@@ -88,35 +81,51 @@ function SignUp(){
   const [password, setPassword] = useState('')
   const [balance, setBalance] = useState('');
   const [email, setEmail] = useState('')
-  const [loginState, setLoginState] = useState(false);
-  const [incorrectLogin, setIncorrectLogin] = useState(false);
+  const [signUpFail, setSignUpFail] = useState(false);
+  const [signUpSuccess, setSignUpSuccess] = useState(false);
+  const [isSignIn, setIsSignIn] = useState(false); // state to toggle between login and sign up
 
   // This is interesting, trying to understand how to send such information. 
   // https://stackoverflow.com/questions/43965316/for-login-get-or-post
+
   async function addUser(){
-    await fetch(`https://webprogrammingserver.onrender.com/addStudent`,{
+    await fetch(`${process.env.REACT_APP_API_URL}/addStudent`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username, password, email, balance})
+      
+      body: JSON.stringify({username,password,email,balance})
+    })
+    .then((res) => {
+      // function handles response, setting loginState based on query results.
+      if(res.status == 401){
+        setSignUpFail(true);
+        setTimeout(() => {
+          setSignUpFail(false);
+        }, 2000);
+      }
+      else{
+        setSignUpSuccess(true)
+        setTimeout(() => {
+          setSignUpSuccess(false)
+        }, 2000);
+        
+      }
     })
     setEmail('')
     setUsername('')
     setPassword('')
     setBalance('')
   }
-
+  if (isSignIn)
+    return <Login/>;
   return(
-    <div className="split left">
-      {/* <img className = "background-image" 
-      src='https://wagner.edu/communications/files/2020/03/MainHall4-1920.jpg'>
-      </img> */}
+    <div className='split left'>
+      <TextAnimation></TextAnimation>
       <div className="inner-login-div">
-        {/*     <LoginInSignUp></LoginInSignUp> */}
-        <h1 className="login-heading"> <TextAnimationSignUp></TextAnimationSignUp> </h1>
         <div className='login-forms'>
-
+          <h1>Create an account </h1>
             <h2 className='username-password'>Username <IoMdPerson /></h2>
               <input 
               required
@@ -127,6 +136,7 @@ function SignUp(){
               />
             <h2 className='username-password'> Password <IoIosKey/></h2>
             <input 
+              required
               className='logins'
               type = "password"
               value = {password}
@@ -147,14 +157,17 @@ function SignUp(){
               value = {balance}
               onChange={(event) => setBalance(event.target.value)}
               />                    
+            <p className='sign-up-link'> Already have an account?
+            <button className="sign-buttons" onClick={() => setIsSignIn(true)}> Sign In</button> 
+            </p>
+            {signUpFail ? <h3 className='login-text' style={{textAlign : 'center'}}> <SignUpFailed></SignUpFailed></h3> : null}
+            {signUpSuccess ? <h3 className='login-text' style={{textAlign : 'center'}}> <SignUpSuccess></SignUpSuccess></h3> : null}
             <button className='login-button' onClick={addUser}> Sign Up </button>
-
         </div>
         <div className='split right'>
-          {/* <img className='login-image' src='https://www.marketplace.org/wp-content/uploads/2021/04/CM4.png?fit=2500%2C1807' width={1400}></img> */}
+          <img className='login-image' src='https://www.marketplace.org/wp-content/uploads/2021/04/CM4.png?fit=2500%2C1807' width={1600}></img>
         </div>
       </div>
-      {/* <h1>dont have an account? sign up here</h1> */}
     </div>
   )
 }
@@ -164,64 +177,39 @@ function Login(){
   const [password, setPassword] = useState('')
   const [loginState, setLoginState] = useState(false);
   const [incorrectLogin, setIncorrectLogin] = useState(false);
-  const [signUpPage, setSignUpPage] = useState(false);
-  // async function validateUser(){
-  //   const verification = await fetch("https://webprogrammingfinalprojectbeta.onrender.com/verifyUser", { //added to verify if user signed in, if yes (look below for further comments)
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({username, password})
-  //   })
-  //   if (verification.ok) { //if verification (login successful), sets this value to true which shows the Vault page
-  //     setIsLoggedIn(true);
-  //   }
-  //   .then((res) => {
-  //     // function handles response, setting loginState based on query results.
-  //     if(res.status == 200){
-  //       setLoginState(true);
-  //     }
-  //     else{
-  //       setIncorrectLogin(true);
-  //     }
-  //   })
-  // }
-    async function validateUser() {
-    try{
-    const verification = await fetch(`https://webprogrammingserver.onrender.com/verifyUser`, {//added to verify if user signed in, if yes (look below for further comments)
+  // state to toggle between login and sign up
+  const [isSignUp, setIsSignUp] = useState(false); 
+  async function validateUser(){
+    await fetch(`${process.env.REACT_APP_API_URL}/verifyUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({username, password})
-    });
-    if (verification.ok) { //if verification (login successful), sets this value to true which shows the Vault page
-      setIsLoggedIn(true);
-    } else {
-      setIncorrectLogin(true);
-      setIsLoggedIn(false);
-      setLoginState(false);
-    }
+      body: JSON.stringify({ username, password})
+    })
+    .then((res) => {
+      // function handles response, setting loginState based on query results.
+      if(res.status == 200){
+        setLoginState(true);
+      }
+      else{
+        setIncorrectLogin(true);
+        setTimeout(() => {
+          setIncorrectLogin(false);
+        }, 2000);
+      }
+    })
   }
 
-catch
-  (error)
-  {
-    console.error('error: ', error);
-    setIncorrectLogin(true);
-    setIsLoggedIn(false);
-    setLoginState(false);
-  }
-}
-
-  // TODO: when login successful, return homepage div. 
   if (loginState)
-    return <Success></Success>
+    // TODO: when login successful, return homepage div. 
+    return <Homepage></Homepage>
+  if (isSignUp)
+    return <SignUp/>
   return(
     <div className="split left">
       <TextAnimation></TextAnimation>
       <div className="inner-login-div">
-        {/*     <LoginInSignUp></LoginInSignUp> */}
         <h1>Welcome back</h1>
         <p style={{color : 'grey'}}>Please enter your details </p>
         {/* <form> */}
@@ -242,19 +230,17 @@ catch
           required
           onChange={(event) => setPassword(event.target.value)}
           />
-          {incorrectLogin ? <h3 className='logins' style={{textAlign : 'center'}}> <Incorrect></Incorrect></h3> : null}
-          <p className='sign-up-link'>Don't have an account? <button className="sign-up-link">Sign Up</button></p>
+          {incorrectLogin ? <h3 className='login-text' style={{textAlign : 'center'}}> <Incorrect></Incorrect></h3> : null}
+          <p className='sign-up-link'>Don't have an account? 
+            <button className="sign-buttons" onClick={() => setIsSignUp(true)}>Sign Up</button> 
+          </p>
+          <div className='split right'>
+            <img className='login-image' src='https://www.marketplace.org/wp-content/uploads/2021/04/CM4.png?fit=2500%2C1807' width={1400}></img>
+          </div>
         <button className='login-button' onClick={validateUser}> Sign In </button>
       </div>
     </div>
   )
 }
-}
+
 export default App;
-//      depricated for now, goes in App()
-        // <Routes>
-          
-        //   <Route exact path="/" element={<Home></Home>}></Route>
-        //   <Route exact path="/goals" element={<Goals></Goals>}></Route>
-        //   <Route exact path="/myaccount" element={<Myaccount></Myaccount>}></Route>
-        // </Routes>

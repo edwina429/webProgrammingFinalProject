@@ -21,13 +21,19 @@ class Vault{
         return this.#amount
     }
     withdrawMoney(){
-        if(this.#amount >= this.#goal){
-            const withdrawn_amount = this.#amount;
-            this.#amount = 0;
-            return withdrawn_amount;
-        }else{
-            throw new Error("Nice try, but goal not reached yet. Save more money and believe in yourself");
+        if(this.#amount < this.goal){
+            throw new Error("Nice try, but goal not reached yet. Save more money and believe in yourself.");
         }
+        const withdrawn_amount = this.#amount;
+        this.#amount = 0;
+        return withdrawn_amount;
+        // if(this.#amount >= this.#goal){
+        //     const withdrawn_amount = this.#amount;
+        //     this.#amount = 0;
+        //     return withdrawn_amount;
+        // }else{
+        //     throw new Error("Nice try, but goal not reached yet. Save more money and believe in yourself");
+        // }
     }
     getTitle(){
         return this.#title;

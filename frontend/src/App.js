@@ -1,14 +1,13 @@
 import React from 'react';
+import {useState} from "react";
 import {motion} from "framer-motion";
-import { IoMdPerson } from "react-icons/io";import {useState} from "react";
+import { IoMdPerson } from "react-icons/io";
 import { IoIosKey } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { TbPigMoney } from "react-icons/tb";
-import logo from './logo.svg';
-// import Vault from './full_vault';
 import './App.css';
 
-// really cool animated emojis on this website
+// animated emojis on this website
 // https://animated-fluent-emoji.vercel.app/
 
 const TextAnimation = () => {
@@ -41,6 +40,14 @@ const SignUpFailed = () => {
   animate ={{y : 0 , opacity :1}}
   transition={{duration : 0.7, ease : "easeInOut"}}  
   > Username already exists, please try again. </motion.h3>
+}
+
+const SignUpSuccess = () => {
+  return <motion.h3
+  initial ={{y : 25 , opacity :0}}
+  animate ={{y : 0 , opacity :1}}
+  transition={{duration : 0.7, ease : "easeInOut"}}  
+  > Account created, please login. </motion.h3>
 }
 
 function App() {
@@ -126,6 +133,7 @@ function SignUp(){
               />
             <h2 className='username-password'> Password <IoIosKey/></h2>
             <input 
+              required
               className='logins'
               type = "password"
               value = {password}
@@ -140,7 +148,6 @@ function SignUp(){
               required
               />          
             <h2 className='username-password'> Starting Deposit <TbPigMoney /></h2>
-            
             <input 
               className='logins'
               type = "text"
@@ -150,13 +157,12 @@ function SignUp(){
             <p className='sign-up-link'> Already have an account?
             <button className="sign-buttons" onClick={() => setIsSignIn(true)}> Sign In</button> 
             </p>
-            {signUpFail ? <h3 className='logins' style={{textAlign : 'center'}}> <SignUpFailed></SignUpFailed></h3> : null}
-            {signUpSuccess ? <h3 className='logins' style={{textAlign : 'center'}}> <h1>sign up success!</h1></h3> : null}
+            {signUpFail ? <h3 className='login-text' style={{textAlign : 'center'}}> <SignUpFailed></SignUpFailed></h3> : null}
+            {signUpSuccess ? <h3 className='login-text' style={{textAlign : 'center'}}> <SignUpSuccess></SignUpSuccess></h3> : null}
             <button className='login-button' onClick={addUser}> Sign Up </button>
-
         </div>
         <div className='split right'>
-          {/* <img className='login-image' src='https://www.marketplace.org/wp-content/uploads/2021/04/CM4.png?fit=2500%2C1807' width={1400}></img> */}
+          <img className='login-image' src='https://www.marketplace.org/wp-content/uploads/2021/04/CM4.png?fit=2500%2C1807' width={1600}></img>
         </div>
       </div>
     </div>
@@ -168,7 +174,8 @@ function Login(){
   const [password, setPassword] = useState('')
   const [loginState, setLoginState] = useState(false);
   const [incorrectLogin, setIncorrectLogin] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false); // state to toggle between login and sign up
+  // state to toggle between login and sign up
+  const [isSignUp, setIsSignUp] = useState(false); 
   async function validateUser(){
     await fetch(`${process.env.REACT_APP_API_URL}/verifyUser`, {
       method: "POST",
@@ -191,14 +198,11 @@ function Login(){
     })
   }
 
-  // TODO: when login successful, return homepage div. 
   if (loginState)
+    // TODO: when login successful, return homepage div. 
     return <Success></Success>
-
   if (isSignUp)
-    return <SignUp/>;
-
-
+    return <SignUp/>
   return(
     <div className="split left">
       <TextAnimation></TextAnimation>
@@ -223,12 +227,12 @@ function Login(){
           required
           onChange={(event) => setPassword(event.target.value)}
           />
-          {incorrectLogin ? <h3 className='logins' style={{textAlign : 'center'}}> <Incorrect></Incorrect></h3> : null}
+          {incorrectLogin ? <h3 className='login-text' style={{textAlign : 'center'}}> <Incorrect></Incorrect></h3> : null}
           <p className='sign-up-link'>Don't have an account? 
             <button className="sign-buttons" onClick={() => setIsSignUp(true)}>Sign Up</button> 
           </p>
           <div className='split right'>
-            {/* <img className='login-image' src='https://www.marketplace.org/wp-content/uploads/2021/04/CM4.png?fit=2500%2C1807' width={1400}></img> */}
+            <img className='login-image' src='https://www.marketplace.org/wp-content/uploads/2021/04/CM4.png?fit=2500%2C1807' width={1400}></img>
           </div>
         <button className='login-button' onClick={validateUser}> Sign In </button>
       </div>

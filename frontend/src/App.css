@@ -11,11 +11,9 @@ body {
   height: 100%;
   width: 50%;
   position: fixed;
-  /* z-index: 1; */
   overflow-x: hidden;
   padding-top: 20px;
 }
-
 
 .sign-up{
   display: flex;
@@ -33,29 +31,23 @@ body {
   display: flex;
   width: 100%;
   height: 100%;
-  /* flex-direction defaults to row */
   align-items: center;
-  /* 100px 100px 100px 100px; */
   left: 0;
   background-color: #ffffff;
 }
 
 /* Control the right side */
 .right {
-  right: 0;
+  right: 0px;
   bottom: 0px;
   background: #74ebd5;  
-  /* background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);  Chrome 10-25, Safari 5.1-6 */
-  /* background: linear-gradient(to right, #ACB6E5, #74ebd5); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
-.background-image{
-  position: absolute;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
+.login-image{
+  margin-left: 100px;
 }
 
 .outer-login-div{
@@ -63,7 +55,6 @@ body {
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-
 }
 
 
@@ -72,7 +63,6 @@ body {
   font-weight: 600;
   font-size: medium;
   color: rgb(0, 0, 0);
-
 }
 
 
@@ -80,17 +70,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   align-self: center;
   color: rgb(255, 255, 255);
-  background-color: rgb(68, 46, 110);
-  /* width: 420px;
-  height: 40px; */
+  background-color: rgb(105, 49, 92);
   margin-left: 10px;
   font-weight: 500;
   font-size:x-small;
-  /* border-radius: 5px; */
-  /* border-color: navy;
-  background-color: navy; */
   font-family: "Poppins";
-  /* padding-left: 100px; */
+}
+
+.login-text{
+  font-size: 14px;
+  padding-top: 10px;
 }
 
 .logins{
@@ -112,12 +101,8 @@ body {
   height: 40px;
   font-weight: 500;
   font-size: small;
-  /* border-radius: 5px; */
-  /* border-color: navy;
-  background-color: navy; */
   font-family: "Poppins";
   margin-top: 50px;
-  /* padding-left: 100px; */
 }
 
 .login-button:hover{
@@ -145,7 +130,6 @@ body {
   font-family: "Poppins", serif;
   font-weight: 700;
   font-style: normal;
-  /* border: 1px red solid; */
 }
 
 .login-heading{

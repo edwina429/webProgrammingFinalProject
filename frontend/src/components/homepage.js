@@ -183,15 +183,15 @@ class Vault{
     }
 }
 
-function GoalsPage({navigate}){
-    return(
-        <div>
-            <button onClick={() => navigate('goals')} > {/*include style here*/}
-            Go to Goals Page
-            </button>
-        </div>
-    );
-}
+// function GoalsPage({navigate}){
+//     return(
+//         <div>
+//             <button onClick={() => navigate('goals')} > {/*include style here*/}
+//             Go to Goals Page
+//             </button>
+//         </div>
+//     );
+// }
 
 
 // function createVault(){

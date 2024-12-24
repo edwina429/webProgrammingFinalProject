@@ -1,7 +1,7 @@
 import React from "react";
 // import {useState} from 'react';
 import "./webpage.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Chart, registerables } from "chart.js";
 function Vault({navigate}){
   
@@ -22,7 +22,7 @@ function Vault({navigate}){
 
 Chart.register(...registerables);
 
-const App = () => {
+const HomePage = () => {
   const [charts, setCharts] = useState([]);
   const [goals, setGoals] = useState([]);
 

@@ -59,7 +59,10 @@ function App() {
   if (!isLoggedIn) {
     return (
         <div> 
-          <Login setIsLoggedIn={setIsLoggedIn}/>
+          {/* <Login/> */}
+          <Homepage></Homepage>
+          {/* <Full_vault></Full_vault> */}
+          
         </div>
     );
 }
@@ -89,7 +92,7 @@ function SignUp(){
   // This is interesting, trying to understand how to send such information. 
   // https://stackoverflow.com/questions/43965316/for-login-get-or-post
   async function addUser(){
-    await fetch(`${process.env.REACT_APP_API_URL}/addStudent`,{
+    await fetch(`https://webprogrammingserver.onrender.com/addStudent`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -154,7 +157,7 @@ function SignUp(){
   )
 }
 
-function Login(setIsLoggedIn){
+function Login(){
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginState, setLoginState] = useState(false);
@@ -183,7 +186,7 @@ function Login(setIsLoggedIn){
   // }
     async function validateUser() {
     try{
-    const verification = await fetch(`${process.env.REACT_APP_API_URL}/verifyUser`, {//added to verify if user signed in, if yes (look below for further comments)
+    const verification = await fetch(`https://webprogrammingserver.onrender.com/verifyUser`, {//added to verify if user signed in, if yes (look below for further comments)
       method: "POST",
       headers: {
         "Content-Type": "application/json"

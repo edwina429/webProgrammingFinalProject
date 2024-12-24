@@ -176,4 +176,4 @@ function createVault(){
 
 }
 
-export default createVault;
+export default CreateVault;
